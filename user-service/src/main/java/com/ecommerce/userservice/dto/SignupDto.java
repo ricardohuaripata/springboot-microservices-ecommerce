@@ -4,6 +4,7 @@ import com.ecommerce.userservice.annotation.PasswordRepeatEqual;
 import com.ecommerce.userservice.annotation.ValidEmail;
 import com.ecommerce.userservice.annotation.ValidPassword;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -26,9 +27,11 @@ public class SignupDto {
     private String password;
     private String passwordRepeat;
 
+    @NotEmpty
     @Size(max = 64)
     private String firstName;
 
+    @NotEmpty
     @Size(max = 64)
     private String lastName;
 }

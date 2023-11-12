@@ -34,7 +34,7 @@ public class Color {
     @Column(length = 64, nullable = false)
     private String name;
 
-    @Column(length = 6, nullable = false)
+    @Column(length = 6, nullable = false, unique = true)
     private String hexCode;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")

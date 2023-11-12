@@ -1,5 +1,6 @@
 package com.ecommerce.userservice.dto;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
@@ -14,24 +15,32 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ShippingAddressDto {
+
+    @NotEmpty
     @Size(max = 64)
     private String firstName;
 
+    @NotEmpty
     @Size(max = 64)
     private String lastName;
 
+    @NotEmpty
     @Size(max = 64)
     private String country;
 
+    @NotEmpty
     @Size(max = 64)
     private String city;
 
+    @NotEmpty
     @Size(max = 10)
     private String postalCode;
 
+    @NotEmpty
     @Size(max = 1024)
     private String address;
 
+    @NotEmpty
     @Size(max = 20)
     private String contactPhone;
 }

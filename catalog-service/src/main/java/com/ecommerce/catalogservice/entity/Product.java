@@ -36,6 +36,9 @@ public class Product {
     @Column(length = 64, nullable = false)
     private String name;
 
+    @Column(length = 64, nullable = false, unique = true)
+    private String slug;
+
     @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
 
