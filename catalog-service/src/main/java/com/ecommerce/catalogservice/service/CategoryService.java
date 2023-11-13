@@ -39,15 +39,15 @@ public class CategoryService implements ICategory {
         try {
             getCategoryBySlug(categoryDto.getSlug());
 
-            // Si no se lanzó la excepción, significa que la categoria ya existe
+            // Si no se lanzó la excepción CategoryNotFoundException, significa que el slug ya existe
             throw new SlugExistsException();
 
         } catch (CategoryNotFoundException e) {
             Category newCategory = new Category();
 
-            newCategory.setName(categoryDto.getName());
-            newCategory.setDescription(categoryDto.getDescription());
+            newCategory.setTitle(categoryDto.getTitle());
             newCategory.setSlug(categoryDto.getSlug());
+            newCategory.setFeaturedImageUrl(categoryDto.getFeaturedImageUrl());
             Date currentDate = new Date();
             newCategory.setDateCreated(currentDate);
             newCategory.setDateLastModified(currentDate);

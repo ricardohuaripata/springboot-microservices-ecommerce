@@ -1,6 +1,9 @@
 package com.ecommerce.catalogservice.dto;
 
+import java.util.UUID;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -15,14 +18,23 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ColorDto {
+public class ProductDto {
+
+    @NotNull
+    private UUID categoryId;
+
     @NotBlank
     @Size(max = 64)
     private String title;
 
     @NotBlank
-    @Size(max = 6) // Se espera un máximo de 6 caracteres hexadecimales
-    @Pattern(regexp = "^[A-Fa-f0-9]{6}$", message = "Invalid hexcode, must contain 6 valid hexadecimal characters")
-    private String hexcode;
+    @Size(max = 64)
+    // Expresión regular para permitir letras minúsculas, números y guiones
+    @Pattern(regexp = "^[a-z0-9-]+$", message = "Invalid slug, only lowercase letters, numbers and hyphens are allowed")
+    private String slug;
+
+    @NotBlank
+    @Size(max = 1024)
+    private String description;
 
 }

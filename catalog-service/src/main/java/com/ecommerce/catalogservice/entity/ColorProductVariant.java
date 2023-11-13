@@ -22,13 +22,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product_color_variants")
+@Table(name = "color_product_variants")
 @Data
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductColorVariant {
+public class ColorProductVariant {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
@@ -48,11 +48,11 @@ public class ProductColorVariant {
     @Column(name = "final_price", nullable = false, precision = 10, scale = 2)
     private BigDecimal finalPrice;
 
-    @Column(name = "front_product_image", nullable = false, columnDefinition = "TEXT")
-    private String frontProductImage;
+    @Column(name = "front_image_url", nullable = false, columnDefinition = "TEXT")
+    private String frontImageUrl;
 
-    @Column(name = "back_product_image", nullable = false, columnDefinition = "TEXT")
-    private String backProductImage;
+    @Column(name = "back_image_url", nullable = false, columnDefinition = "TEXT")
+    private String backImageUrl;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private Date dateCreated;

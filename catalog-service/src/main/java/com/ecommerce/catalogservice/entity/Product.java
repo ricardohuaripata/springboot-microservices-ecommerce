@@ -34,7 +34,7 @@ public class Product {
     private UUID id;
 
     @Column(length = 64, nullable = false)
-    private String name;
+    private String title;
 
     @Column(length = 64, nullable = false, unique = true)
     private String slug;

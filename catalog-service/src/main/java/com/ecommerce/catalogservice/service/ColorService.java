@@ -46,7 +46,7 @@ public class ColorService implements IColor {
         } catch (ColorNotFoundException e) {
             Color newColor = new Color();
 
-            newColor.setName(colorDto.getName());
+            newColor.setTitle(colorDto.getTitle());
             newColor.setHexCode(colorDto.getHexcode());
             Date currentDate = new Date();
             newColor.setDateCreated(currentDate);

@@ -22,21 +22,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product_color_size_variants")
+@Table(name = "size_color_product_variants")
 @Data
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductColorSizeVariant {
+public class SizeColorProductVariant {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "productColorVariant_id", referencedColumnName = "id", nullable = false)
-    private ProductColorVariant product;
+    @JoinColumn(name = "color_product_variant_id", referencedColumnName = "id", nullable = false)
+    private ColorProductVariant colorProductVariant;
 
     @Column(name = "size", length = 3, nullable = false)
     @Check(constraints = "size IN ('S', 'M', 'L', 'XL', 'XXL')")

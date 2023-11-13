@@ -1,6 +1,6 @@
 package com.ecommerce.catalogservice.dto;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -16,16 +16,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryDto {
-    @NotEmpty
+    @NotBlank
     @Size(max = 64)
-    private String name;
+    private String title;
 
-    @NotEmpty
+    @NotBlank
     @Size(max = 64)
-    @Pattern(regexp = "^[a-z0-9-]+$", message = "Invalid slug, only lowercase letters, numbers and hyphens are allowed") // Expresión regular para permitir letras minúsculas, números y guiones
+    // Expresión regular para permitir letras minúsculas, números y guiones
+    @Pattern(regexp = "^[a-z0-9-]+$", message = "Invalid slug, only lowercase letters, numbers and hyphens are allowed")
     private String slug;
 
-    @NotEmpty
+    @NotBlank
     @Size(max = 1024)
-    private String description;
+    private String featuredImageUrl;
 }

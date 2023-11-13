@@ -32,7 +32,7 @@ public class Color {
     private UUID id;
 
     @Column(length = 64, nullable = false)
-    private String name;
+    private String title;
 
     @Column(length = 6, nullable = false, unique = true)
     private String hexCode;

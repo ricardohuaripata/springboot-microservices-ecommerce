@@ -36,10 +36,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createNewUser(SignupDto signupDto) {
         try {
-            User user = getUserByEmail(signupDto.getEmail());
-            if (user != null) {
-                throw new EmailExistsException();
-            }
+            getUserByEmail(signupDto.getEmail());
+            // Si no se lanzó la excepción UserNotFoundException, significa que el email ya
+            // está cogido
+            throw new EmailExistsException();
+            
         } catch (UserNotFoundException e) {
             User newUser = new User();
             newUser.setEmail(signupDto.getEmail());
@@ -47,14 +48,13 @@ public class UserServiceImpl implements UserService {
             newUser.setFirstName(signupDto.getFirstName());
             newUser.setLastName(signupDto.getLastName());
             newUser.setEmailVerified(false);
-            newUser.setDateCreated(new Date());
-            newUser.setDateLastModified(new Date());
+            Date currentDate = new Date();
+            newUser.setDateCreated(currentDate);
+            newUser.setDateLastModified(currentDate);
             newUser.setRole(Role.ROLE_USER.name());
-            User savedUser = userRepository.save(newUser);
 
-            return savedUser;
+            return userRepository.save(newUser);
         }
-        return null;
     }
 
 }

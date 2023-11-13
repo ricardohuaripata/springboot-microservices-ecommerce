@@ -32,13 +32,13 @@ public class Category {
     private UUID id;
 
     @Column(length = 64, nullable = false)
-    private String name;
+    private String title;
 
     @Column(length = 64, nullable = false, unique = true)
     private String slug;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String description;
+    @Column(name = "featured_image_url", nullable = false, columnDefinition = "TEXT")
+    private String featuredImageUrl;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private Date dateCreated;
